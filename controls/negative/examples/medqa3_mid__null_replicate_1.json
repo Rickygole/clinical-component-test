@@ -1,0 +1,78 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "agreement",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "replicate.csv": "7158c7d7eacdda521c696dbb8d40a0b5811552bfd198418eea814ec5494ba48e"
+  },
+  "entries": [
+    {
+      "test": "agreed_answer_error_rate",
+      "unit": "3 models: llama3_8b, qwen25_7b, gemma3n_e4b; denominator: cases where all models give the same answer",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b"
+      ],
+      "count": 39,
+      "denominator": 442,
+      "estimate": 0.08823529411764706,
+      "lower_95": 0.06521701671600708,
+      "upper_95": 0.11834926497788234,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    },
+    {
+      "test": "unanimous_wrong_rate",
+      "unit": "3 models: llama3_8b, qwen25_7b, gemma3n_e4b; denominator: cases all models answered wrongly",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b"
+      ],
+      "count": 39,
+      "denominator": 279,
+      "estimate": 0.13978494623655913,
+      "lower_95": 0.10397021592142647,
+      "upper_95": 0.18538431916664588,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "baselines": {
+        "naive_independence": 0.11111111111111112,
+        "model_expectation": 0.11989375527118287,
+        "permutation_mean": 0.12109677419354839,
+        "permutation_95th_percentile": 0.15412186379928317,
+        "permutation_n": 10000,
+        "permutation_seed": 42,
+        "ratio_to_naive": 1.258064516129032,
+        "ratio_to_model_expectation": 1.165906814082061,
+        "ratio_to_permutation_mean": 1.1543242763274728
+      }
+    },
+    {
+      "test": "agreed_wrong_exposure",
+      "unit": "3 models: llama3_8b, qwen25_7b, gemma3n_e4b; denominator: all scored cases",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b"
+      ],
+      "count": 39,
+      "denominator": 1273,
+      "estimate": 0.030636292223095052,
+      "lower_95": 0.02249112773387711,
+      "upper_95": 0.041605677907352506,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    }
+  ],
+  "flags": [],
+  "notes": [
+    "0 of 1273 cases unscored: at least one missing or invalid answer"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}

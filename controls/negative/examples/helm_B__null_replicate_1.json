@@ -1,0 +1,84 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "agreement",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "replicate.csv": "644ef71ec8fe0ef1a3893a15090c6c53509b562dbe118730d8d92cf0eae913dc"
+  },
+  "entries": [
+    {
+      "test": "agreed_answer_error_rate",
+      "unit": "5 models: meta_llama-3.1-405b-instruct-turbo, qwen_qwen2.5-72b-instruct-turbo, google_gemini-1.5-pro-002, deepseek-ai_deepseek-v3, openai_gpt-4o-2024-08-06; denominator: cases where all models give the same answer",
+      "components": [
+        "meta_llama-3.1-405b-instruct-turbo",
+        "qwen_qwen2.5-72b-instruct-turbo",
+        "google_gemini-1.5-pro-002",
+        "deepseek-ai_deepseek-v3",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "count": 1,
+      "denominator": 611,
+      "estimate": 0.0016366612111292963,
+      "lower_95": 0.0002889693380378946,
+      "upper_95": 0.009211786892516928,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    },
+    {
+      "test": "unanimous_wrong_rate",
+      "unit": "5 models: meta_llama-3.1-405b-instruct-turbo, qwen_qwen2.5-72b-instruct-turbo, google_gemini-1.5-pro-002, deepseek-ai_deepseek-v3, openai_gpt-4o-2024-08-06; denominator: cases all models answered wrongly",
+      "components": [
+        "meta_llama-3.1-405b-instruct-turbo",
+        "qwen_qwen2.5-72b-instruct-turbo",
+        "google_gemini-1.5-pro-002",
+        "deepseek-ai_deepseek-v3",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "count": 1,
+      "denominator": 41,
+      "estimate": 0.024390243902439025,
+      "lower_95": 0.004318531568912411,
+      "upper_95": 0.1259506205577423,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "baselines": {
+        "naive_independence": 0.012345679012345677,
+        "model_expectation": 0.019463663061192574,
+        "permutation_mean": 0.030829268292682923,
+        "permutation_95th_percentile": 0.07317073170731707,
+        "permutation_n": 10000,
+        "permutation_seed": 42,
+        "ratio_to_naive": 1.9756097560975614,
+        "ratio_to_model_expectation": 1.2531168375530124,
+        "ratio_to_permutation_mean": 0.7911392405063292
+      }
+    },
+    {
+      "test": "agreed_wrong_exposure",
+      "unit": "5 models: meta_llama-3.1-405b-instruct-turbo, qwen_qwen2.5-72b-instruct-turbo, google_gemini-1.5-pro-002, deepseek-ai_deepseek-v3, openai_gpt-4o-2024-08-06; denominator: all scored cases",
+      "components": [
+        "meta_llama-3.1-405b-instruct-turbo",
+        "qwen_qwen2.5-72b-instruct-turbo",
+        "google_gemini-1.5-pro-002",
+        "deepseek-ai_deepseek-v3",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "count": 1,
+      "denominator": 1000,
+      "estimate": 0.001,
+      "lower_95": 0.00017654637062607809,
+      "upper_95": 0.0056425585979579355,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    }
+  ],
+  "flags": [],
+  "notes": [
+    "0 of 1000 cases unscored: at least one missing or invalid answer"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}

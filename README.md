@@ -4,7 +4,7 @@
 
 Every version is archived on Zenodo. The concept DOI 10.5281/zenodo.24183594 resolves to the latest version. Version 0.1.0: https://doi.org/10.5281/zenodo.24183595. Version 0.1.1: https://doi.org/10.5281/zenodo.24183862.
 
-cctest: pre-release checks for clinical AI systems that combine components. This is v0.1.1: the code of the first public version (v0.1.0) plus an outside-data run. It packages two checks and reproduces the published analyses they come from. It is designed to let teams check, before deployment, two things about a system built from several parts.
+cctest: pre-release checks for clinical AI systems that combine components. This is v0.1.2: the code of the first public version (v0.1.0) plus an outside-data run (v0.1.1), a negative control and a layer test on public benchmarks (v0.1.2). It packages two checks and reproduces the published analyses they come from. It is designed to let teams check, before deployment, two things about a system built from several parts.
 
 1. Agreement test for combined language models. When several models answer the same multiple-choice question and all agree, how often is the shared answer wrong, and do the models share wrong answers more often than a permutation baseline predicts?
 2. Data-layer test for multi-input fusion models. What does adding each data layer do to held-out AUROC, and does any layer fail to exceed chance on its own?
@@ -85,6 +85,12 @@ Decision values: `supports reliance`, `fails`, `inconclusive`, `no limit recorde
 ## Outside-data run (v0.1.1)
 
 The agreement test was run, unchanged, on MedQA outputs that Stanford CRFM published for ten models in HELM Lite. The panels and the extraction rule were committed before the outside files were downloaded. Both five-model panels raise the convergent_failure flag. See [outside/RESULTS_v0.1.1.md](outside/RESULTS_v0.1.1.md).
+
+## Negative control and public multi-omic benchmarks (v0.1.2)
+
+Negative control: for seven real configurations, every model's correctness was kept and its wrong answers were redrawn independently, so shared errors are absent by construction. The plan was committed before any replicate was generated. The flag fired in 47 of 1,400 replicates (3.4%, 2.5% to 4.4%), and in all seven real datasets. See [controls/negative/RESULTS_v0.1.2.md](controls/negative/RESULTS_v0.1.2.md).
+
+Layer test on public benchmarks: the unchanged layer test was run on the ROSMAP and BRCA benchmarks with an added noise layer, results already reported in the SGOF paper. It flags the noise layer in both and reproduces the published losses. See [outside_layers/RESULTS_v0.1.2.md](outside_layers/RESULTS_v0.1.2.md).
 
 ## Data and sources
 

@@ -1,0 +1,81 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "agreement",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "replicate.csv": "bce1aeb6d25e974bf0b675c6dd40f7d5134a1f93378bdb974cc7550895bfbcf8"
+  },
+  "entries": [
+    {
+      "test": "agreed_answer_error_rate",
+      "unit": "4 models: llama3_8b, qwen25_7b, gemma3n_e4b, gpt4o; denominator: cases where all models give the same answer",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b",
+        "gpt4o"
+      ],
+      "count": 11,
+      "denominator": 801,
+      "estimate": 0.01373283395755306,
+      "lower_95": 0.007685213445832081,
+      "upper_95": 0.024422301068341562,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    },
+    {
+      "test": "unanimous_wrong_rate",
+      "unit": "4 models: llama3_8b, qwen25_7b, gemma3n_e4b, gpt4o; denominator: cases all models answered wrongly",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b",
+        "gpt4o"
+      ],
+      "count": 11,
+      "denominator": 301,
+      "estimate": 0.036544850498338874,
+      "lower_95": 0.020526477368031353,
+      "upper_95": 0.06424368126020798,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "baselines": {
+        "naive_independence": 0.037037037037037035,
+        "model_expectation": 0.040424407756467655,
+        "permutation_mean": 0.0405235880398671,
+        "permutation_95th_percentile": 0.059800664451827246,
+        "permutation_n": 10000,
+        "permutation_seed": 42,
+        "ratio_to_naive": 0.9867109634551496,
+        "ratio_to_model_expectation": 0.9040293359026867,
+        "ratio_to_permutation_mean": 0.9018167508362304
+      }
+    },
+    {
+      "test": "agreed_wrong_exposure",
+      "unit": "4 models: llama3_8b, qwen25_7b, gemma3n_e4b, gpt4o; denominator: all scored cases",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b",
+        "gpt4o"
+      ],
+      "count": 11,
+      "denominator": 2816,
+      "estimate": 0.00390625,
+      "lower_95": 0.002182613398493964,
+      "upper_95": 0.006981539692404086,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    }
+  ],
+  "flags": [],
+  "notes": [
+    "0 of 2816 cases unscored: at least one missing or invalid answer"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}

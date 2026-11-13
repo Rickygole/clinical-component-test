@@ -1,0 +1,90 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "agreement",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "medqa_answers.csv": "625dd1ce1f884609820fed9404995aea7065130327a282f5aea4027f3b3f52a1"
+  },
+  "entries": [
+    {
+      "test": "agreed_answer_error_rate",
+      "unit": "3 models: llama3_8b, qwen25_7b, gemma3n_e4b; denominator: cases where all models give the same answer",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b"
+      ],
+      "count": 117,
+      "denominator": 520,
+      "estimate": 0.225,
+      "lower_95": 0.1912004203635535,
+      "upper_95": 0.26283286550148327,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    },
+    {
+      "test": "unanimous_wrong_rate",
+      "unit": "3 models: llama3_8b, qwen25_7b, gemma3n_e4b; denominator: cases all models answered wrongly",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b"
+      ],
+      "count": 117,
+      "denominator": 279,
+      "estimate": 0.41935483870967744,
+      "lower_95": 0.36293242949334387,
+      "upper_95": 0.4779678395562246,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "baselines": {
+        "naive_independence": 0.11111111111111112,
+        "model_expectation": 0.11420125971017323,
+        "permutation_mean": 0.11701541218637994,
+        "permutation_95th_percentile": 0.15053763440860216,
+        "permutation_n": 10000,
+        "permutation_seed": 42,
+        "ratio_to_naive": 3.7741935483870965,
+        "ratio_to_model_expectation": 3.6720684147787965,
+        "ratio_to_permutation_mean": 3.583757309180238
+      }
+    },
+    {
+      "test": "agreed_wrong_exposure",
+      "unit": "3 models: llama3_8b, qwen25_7b, gemma3n_e4b; denominator: all scored cases",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b"
+      ],
+      "count": 117,
+      "denominator": 1271,
+      "estimate": 0.0920535011801731,
+      "lower_95": 0.07736546482894535,
+      "upper_95": 0.10920005449509038,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    }
+  ],
+  "flags": [
+    {
+      "flag": "convergent_failure",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b"
+      ],
+      "rule": "unanimous_wrong_rate above the 95th percentile of the permutation baseline",
+      "observed": 0.41935483870967744,
+      "threshold": 0.15053763440860216
+    }
+  ],
+  "notes": [
+    "2 of 1273 cases unscored: at least one missing or invalid answer"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}

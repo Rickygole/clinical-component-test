@@ -1,0 +1,81 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "agreement",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "replicate.csv": "9473de0e97bef462ce5aa2578f5e8838ef3246158e99a14b9a7c239bb7c1d8ac"
+  },
+  "entries": [
+    {
+      "test": "agreed_answer_error_rate",
+      "unit": "4 models: llama3_8b, qwen25_7b, gemma3n_e4b, deepseek_v3; denominator: cases where all models give the same answer",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b",
+        "deepseek_v3"
+      ],
+      "count": 6,
+      "denominator": 389,
+      "estimate": 0.015424164524421594,
+      "lower_95": 0.007087706146932512,
+      "upper_95": 0.033237617122790636,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    },
+    {
+      "test": "unanimous_wrong_rate",
+      "unit": "4 models: llama3_8b, qwen25_7b, gemma3n_e4b, deepseek_v3; denominator: cases all models answered wrongly",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b",
+        "deepseek_v3"
+      ],
+      "count": 6,
+      "denominator": 143,
+      "estimate": 0.04195804195804196,
+      "lower_95": 0.0193693750101162,
+      "upper_95": 0.08851200227882705,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "baselines": {
+        "naive_independence": 0.037037037037037035,
+        "model_expectation": 0.03834456110255689,
+        "permutation_mean": 0.036898601398601405,
+        "permutation_95th_percentile": 0.06293706293706294,
+        "permutation_n": 10000,
+        "permutation_seed": 42,
+        "ratio_to_naive": 1.132867132867133,
+        "ratio_to_model_expectation": 1.094237116075482,
+        "ratio_to_permutation_mean": 1.1371174073723112
+      }
+    },
+    {
+      "test": "agreed_wrong_exposure",
+      "unit": "4 models: llama3_8b, qwen25_7b, gemma3n_e4b, deepseek_v3; denominator: all scored cases",
+      "components": [
+        "llama3_8b",
+        "qwen25_7b",
+        "gemma3n_e4b",
+        "deepseek_v3"
+      ],
+      "count": 6,
+      "denominator": 1273,
+      "estimate": 0.004713275726630008,
+      "lower_95": 0.002161872963976761,
+      "upper_95": 0.010244881775429558,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    }
+  ],
+  "flags": [],
+  "notes": [
+    "0 of 1273 cases unscored: at least one missing or invalid answer"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}

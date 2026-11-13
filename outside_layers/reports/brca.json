@@ -1,0 +1,193 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "layers",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "brca_fold_auroc.csv": "adb6f7a378bbc4e3390002f3661c45ce952426ab80fb375a1aee5244697a71a8"
+  },
+  "entries": [
+    {
+      "test": "solo_layer_auroc",
+      "unit": "held-out AUROC of DNAm alone, mean over 5x5 folds",
+      "components": [
+        "single_layer_gcn",
+        "DNAm"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.7958632399999999,
+      "lower_95": 0.7888215199999999,
+      "upper_95": 0.8031471199999999,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "interval": "bootstrap over repeat means",
+      "repeat_lower_95": 0.7888215199999999,
+      "repeat_upper_95": 0.8031471199999999
+    },
+    {
+      "test": "solo_layer_auroc",
+      "unit": "held-out AUROC of mRNA alone, mean over 5x5 folds",
+      "components": [
+        "single_layer_gcn",
+        "mRNA"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.93602312,
+      "lower_95": 0.93336288,
+      "upper_95": 0.93847364,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "interval": "bootstrap over repeat means",
+      "repeat_lower_95": 0.93336288,
+      "repeat_upper_95": 0.93847364
+    },
+    {
+      "test": "solo_layer_auroc",
+      "unit": "held-out AUROC of miRNA alone, mean over 5x5 folds",
+      "components": [
+        "single_layer_gcn",
+        "miRNA"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.85662496,
+      "lower_95": 0.84831644,
+      "upper_95": 0.86459576,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "interval": "bootstrap over repeat means",
+      "repeat_lower_95": 0.84831644,
+      "repeat_upper_95": 0.86459576
+    },
+    {
+      "test": "solo_layer_auroc",
+      "unit": "held-out AUROC of noise alone, mean over 5x5 folds",
+      "components": [
+        "single_layer_gcn",
+        "noise"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.5065530800000001,
+      "lower_95": 0.48870316,
+      "upper_95": 0.52247188,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "interval": "bootstrap over repeat means",
+      "repeat_lower_95": 0.48870316,
+      "repeat_upper_95": 0.52247188
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "mlp_late_fusion: AUROC without noise minus with noise",
+      "components": [
+        "mlp_late_fusion",
+        "noise"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.023244199999999986,
+      "lower_95": 0.016449599999999998,
+      "upper_95": 0.02961075999999998,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "inconclusive",
+      "auroc_with": 0.89335144,
+      "auroc_without": 0.91659564,
+      "auroc_change_with_minus_without": -0.023244199999999986,
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.016449599999999998,
+      "repeat_upper_95": 0.02961075999999998
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "mogonet_style_reimplementation: AUROC without noise minus with noise",
+      "components": [
+        "mogonet_style_reimplementation",
+        "noise"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.11921928000000001,
+      "lower_95": 0.11198039999999998,
+      "upper_95": 0.12645816000000001,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "auroc_with": 0.81593856,
+      "auroc_without": 0.93515784,
+      "auroc_change_with_minus_without": -0.11921928000000001,
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.11198039999999998,
+      "repeat_upper_95": 0.12645816000000001
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "naive_concatenation: AUROC without noise minus with noise",
+      "components": [
+        "naive_concatenation",
+        "noise"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.24014628000000002,
+      "lower_95": 0.20492271999999997,
+      "upper_95": 0.26198312,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "auroc_with": 0.69523052,
+      "auroc_without": 0.9353768000000001,
+      "auroc_change_with_minus_without": -0.24014628000000002,
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.20492271999999997,
+      "repeat_upper_95": 0.26198312
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "sgof: AUROC without noise minus with noise",
+      "components": [
+        "sgof",
+        "noise"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.001816839999999993,
+      "lower_95": -0.000528959999999996,
+      "upper_95": 0.0041269999999999874,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "supports reliance",
+      "auroc_with": 0.9331856399999999,
+      "auroc_without": 0.93500248,
+      "auroc_change_with_minus_without": -0.001816839999999993,
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": -0.000528959999999996,
+      "repeat_upper_95": 0.0041269999999999874
+    }
+  ],
+  "flags": [
+    {
+      "flag": "layer_not_above_chance",
+      "components": [
+        "noise"
+      ],
+      "rule": "no solo held-out AUROC interval for this layer lies above 0.5",
+      "wording": "held-out performance does not exceed chance"
+    }
+  ],
+  "notes": [
+    "bootstrap seed 2026, 10000 repeat resamples, 0 patient resamples",
+    "folds within a repeat share training patients, so intervals are optimistic about new patients",
+    "decisions and flags use the patient interval when out-of-fold predictions are given, otherwise the interval over repeat means",
+    "a layer decision based on the interval over repeat means is provisional",
+    "both intervals resample fixed predictions and ignore retraining; the interval over repeat means narrows as repeats are added without new patients"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}
