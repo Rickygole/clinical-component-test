@@ -2,9 +2,9 @@
 
 Run from the repository root. `cctest` is the v0.1.0 release, installed with `pip install git+https://github.com/Rickygole/clinical-component-test@v0.1.0`.
 
-Download (one line per file in SOURCES.tsv; each `url` column there is the exact source):
+Download and hash check of all 30 files listed in SOURCES.tsv:
 
-    curl -s -o <model>/<file> https://storage.googleapis.com/crfm-helm-public/lite/benchmark_output/runs/<suite>/med_qa:model=<model>/<file>
+    sh outside/download.sh <download folder>
 
 Extraction:
 
@@ -26,4 +26,6 @@ Post hoc, not in the plan:
 
     cctest agreement outside/data/helm_lite_medqa_answers.csv --models qwen_qwen2.5-7b-instruct-turbo,google_gemma-2-9b-it,openai_gpt-4o-mini-2024-07-18,mistralai_mistral-7b-instruct-v0.3 --limits examples/limits_example.json --out outside/reports/post_hoc/panel_A_without_llama_3.1_8b.json
 
-All runs use the defaults of v0.1.0: 10,000 permutations, seed 42.
+Seed check, post hoc: the four Llama 3.1 8B pairs rerun with `--seed 1` to `--seed 20`; results in outside/reports/post_hoc/seed_check/llama_3.1_8b_pairs_seeds_1_to_20.tsv.
+
+All pre-specified runs use the defaults of v0.1.0: 10,000 permutations, seed 42.

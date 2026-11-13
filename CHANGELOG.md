@@ -7,7 +7,8 @@ Outside-data run. The package code, flag rule, baselines, intervals and limits a
 - outside/PLAN_v0.1.1.md: panels, extraction rule and analyses, committed before any outside prediction file was downloaded.
 - outside/SOURCES.tsv: download time, URL and SHA-256 of the 30 source files (Stanford CRFM HELM Lite v1.13.0, MedQA).
 - outside/extract_helm.py, outside/extract_log.txt and outside/data/helm_lite_medqa_answers.csv: answer letters only, no question text.
-- outside/COMMANDS.md: the exact commands.
+- outside/COMMANDS.md and outside/download.sh: the exact commands and a hash-checked download.
+- outside/github_push_event_e864159.json: GitHub's record of the plan push time.
 - outside/reports/: two five-model panels and 20 two-model pairs, run with the v0.1.0 code.
 - outside/RESULTS_v0.1.1.md: both panels raise the convergent_failure flag (19.2% and 48.8% unanimous-wrong against 95th percentiles of 6.7% and 7.3%), and 18 of 20 pairs raise it under the pre-specified seed. The two pairs that do not raise it both include Llama 3.1 8B, which answered B on 955 of 1,000 questions in HELM's run; all four of its pairs are uninformative under the shared-letter-preference limit. A post hoc analysis without that model is reported separately.
 
