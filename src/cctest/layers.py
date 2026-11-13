@@ -122,5 +122,6 @@ def run(folds_path, oof_path=None, limits=None, seed=2026, b=10000, b_patient=20
     notes = [f"bootstrap seed {seed}, {b} repeat resamples, {b_patient if oof else 0} patient resamples",
              "folds within a repeat share training patients, so intervals are optimistic about new patients",
              "decisions and flags use the patient interval when out-of-fold predictions are given, otherwise the interval over repeat means",
+             "a layer decision based on the interval over repeat means is provisional",
              "both intervals resample fixed predictions and ignore retraining; the interval over repeat means narrows as repeats are added without new patients"]
     return report("layers", [p for p in (folds_path, oof_path) if p], entries, flags, notes)

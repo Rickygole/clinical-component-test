@@ -394,6 +394,7 @@
     "bootstrap seed 2026, 10000 repeat resamples, 2000 patient resamples",
     "folds within a repeat share training patients, so intervals are optimistic about new patients",
     "decisions and flags use the patient interval when out-of-fold predictions are given, otherwise the interval over repeat means",
+    "a layer decision based on the interval over repeat means is provisional",
     "both intervals resample fixed predictions and ignore retraining; the interval over repeat means narrows as repeats are added without new patients"
   ],
   "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."

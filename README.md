@@ -76,7 +76,7 @@ Decision values: `supports reliance`, `fails`, `inconclusive`, `no limit recorde
 
 `make test` runs 36 tests, which pass. They include Wilson intervals checked against a reference implementation, the zero-event and all-wrong cases, and rejection of malformed input (labels that are not 0 or 1, labels that change across repeats, misaligned repeats, impossible option counts).
 
-`make reproduce` recomputes 81 numbers from the two source papers using the shipped files and compares each at the printed precision. Current result: ICDM 2026, 35 of 35 checks pass. SGOF, 44 pass and 2 documented differences, 0 fail. The two differences are the bounds of the patient-level interval for the SGOF change (CHANGELOG, difference 4). The differences and other findings are listed in [CHANGELOG.md](CHANGELOG.md) and are not tuned away.
+`make reproduce` recomputes 81 values from the two source papers (80 printed values and one rerun target, the 520 agreed cases) using the shipped files and compares each at the printed precision. Current result: ICDM 2026, 35 of 35 checks pass. SGOF, 44 pass and 2 documented differences, 0 fail. The two differences are the bounds of the patient-level interval for the SGOF change (CHANGELOG, difference 4). The differences and other findings are listed in [CHANGELOG.md](CHANGELOG.md) and are not tuned away.
 
 ## Data and sources
 
