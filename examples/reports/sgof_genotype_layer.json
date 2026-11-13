@@ -1,0 +1,365 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "layers",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "fold_auroc.csv": "a975113c3241667f01369c1117f857110196845c5c28a92ae7bc2336c6a6547b",
+    "oof_predictions.csv": "b804c0684974664e21f53c84f50c3e39df647335ece009a8fa1276fd23a949a5"
+  },
+  "entries": [
+    {
+      "test": "solo_layer_auroc",
+      "unit": "held-out AUROC of expression alone, mean over 10x10 folds",
+      "components": [
+        "gcn_single_layer",
+        "expression"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.60719054,
+      "lower_95": 0.5870464897500001,
+      "upper_95": 0.63014291075,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "interval": "bootstrap over repeat means",
+      "patient_lower_95": 0.525615132416603,
+      "patient_upper_95": 0.6758003246753247
+    },
+    {
+      "test": "solo_layer_auroc",
+      "unit": "held-out AUROC of genotype alone, mean over 10x10 folds",
+      "components": [
+        "gcn_single_layer",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.35452385,
+      "lower_95": 0.32206970475,
+      "upper_95": 0.38335712075,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "interval": "bootstrap over repeat means",
+      "patient_lower_95": 0.28460531540029493,
+      "patient_upper_95": 0.41457494590043276
+    },
+    {
+      "test": "solo_layer_auroc",
+      "unit": "held-out AUROC of methylation alone, mean over 10x10 folds",
+      "components": [
+        "gcn_single_layer",
+        "methylation"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.66923811,
+      "lower_95": 0.644118475,
+      "upper_95": 0.6941197144999999,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "interval": "bootstrap over repeat means",
+      "patient_lower_95": 0.5753645833333332,
+      "patient_upper_95": 0.7440910953800298
+    },
+    {
+      "test": "solo_layer_auroc",
+      "unit": "held-out AUROC of expression alone, mean over 10x10 folds",
+      "components": [
+        "lr_single_layer",
+        "expression"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.65033335,
+      "lower_95": 0.6357607105,
+      "upper_95": 0.6633345792500002,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "interval": "bootstrap over repeat means",
+      "patient_lower_95": 0.5487880170959838,
+      "patient_upper_95": 0.7393160518444667
+    },
+    {
+      "test": "solo_layer_auroc",
+      "unit": "held-out AUROC of genotype alone, mean over 10x10 folds",
+      "components": [
+        "lr_single_layer",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.30619049,
+      "lower_95": 0.28095239000000005,
+      "upper_95": 0.3288571309999999,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "interval": "bootstrap over repeat means",
+      "patient_lower_95": 0.24046549255134972,
+      "patient_upper_95": 0.3762973781476109
+    },
+    {
+      "test": "solo_layer_auroc",
+      "unit": "held-out AUROC of methylation alone, mean over 10x10 folds",
+      "components": [
+        "lr_single_layer",
+        "methylation"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.69061905,
+      "lower_95": 0.67628565975,
+      "upper_95": 0.70409529025,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
+      "interval": "bootstrap over repeat means",
+      "patient_lower_95": 0.594458930899609,
+      "patient_upper_95": 0.778533271309587
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "attention_fusion: AUROC without genotype minus with genotype",
+      "components": [
+        "attention_fusion",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.30411902,
+      "lower_95": 0.26859458699999994,
+      "upper_95": 0.34116720475,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "auroc_with": 0.35600003,
+      "auroc_without": 0.66011905,
+      "auroc_change_with_minus_without": -0.30411902,
+      "interval": "paired bootstrap over repeat means"
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "equal_weight_fusion: AUROC without genotype minus with genotype",
+      "components": [
+        "equal_weight_fusion",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.28464284,
+      "lower_95": 0.25147553549999996,
+      "upper_95": 0.32366834799999994,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "auroc_with": 0.3732381,
+      "auroc_without": 0.6578809399999999,
+      "auroc_change_with_minus_without": -0.28464284,
+      "interval": "paired bootstrap over repeat means"
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "gradient_boosted_trees: AUROC without genotype minus with genotype",
+      "components": [
+        "gradient_boosted_trees",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.05652379,
+      "lower_95": 0.022951190250000003,
+      "upper_95": 0.09047609125,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "auroc_with": 0.5909523999999999,
+      "auroc_without": 0.6474761900000001,
+      "auroc_change_with_minus_without": -0.05652379,
+      "interval": "paired bootstrap over repeat means"
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "late_fusion: AUROC without genotype minus with genotype",
+      "components": [
+        "late_fusion",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.08261908,
+      "lower_95": 0.06957151975,
+      "upper_95": 0.09500120874999998,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "auroc_with": 0.61904762,
+      "auroc_without": 0.7016667000000001,
+      "auroc_change_with_minus_without": -0.08261908,
+      "interval": "paired bootstrap over repeat means"
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "mogcn: AUROC without genotype minus with genotype",
+      "components": [
+        "mogcn",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.03245239999999999,
+      "lower_95": 0.009832765000000004,
+      "upper_95": 0.052809499999999995,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "inconclusive",
+      "auroc_with": 0.5555952300000001,
+      "auroc_without": 0.58804763,
+      "auroc_change_with_minus_without": -0.03245239999999999,
+      "interval": "paired bootstrap over repeat means"
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "mogonet: AUROC without genotype minus with genotype",
+      "components": [
+        "mogonet",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.17363204,
+      "lower_95": 0.13024866849999997,
+      "upper_95": 0.22039546724999987,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "auroc_with": 0.50243505,
+      "auroc_without": 0.6760670900000001,
+      "auroc_change_with_minus_without": -0.17363204,
+      "interval": "paired bootstrap over repeat means"
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "naive_concatenation: AUROC without genotype minus with genotype",
+      "components": [
+        "naive_concatenation",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.34333337,
+      "lower_95": 0.302617849,
+      "upper_95": 0.38109646049999996,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "auroc_with": 0.3313333200000001,
+      "auroc_without": 0.67466669,
+      "auroc_change_with_minus_without": -0.34333337,
+      "interval": "paired bootstrap over repeat means"
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "sgof: AUROC without genotype minus with genotype",
+      "components": [
+        "sgof",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.003166720000000004,
+      "lower_95": -0.00471423024999999,
+      "upper_95": 0.009809600249999998,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "supports reliance",
+      "auroc_with": 0.6707381000000001,
+      "auroc_without": 0.6739048200000001,
+      "auroc_change_with_minus_without": -0.003166720000000004,
+      "interval": "paired bootstrap over repeat means",
+      "patient_loss_mean": -0.0010327504930557807,
+      "patient_lower_95": -0.013106927114280163,
+      "patient_upper_95": 0.011344936674159693
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "sgof_earlier_run: AUROC without genotype minus with genotype",
+      "components": [
+        "sgof_earlier_run",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.012119030000000006,
+      "lower_95": 0.002857129750000009,
+      "upper_95": 0.020999920499999998,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "inconclusive",
+      "auroc_with": 0.6669761900000001,
+      "auroc_without": 0.67909522,
+      "auroc_change_with_minus_without": -0.012119030000000006,
+      "interval": "paired bootstrap over repeat means"
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "similarity_network_fusion: AUROC without genotype minus with genotype",
+      "components": [
+        "similarity_network_fusion",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.11238100999999999,
+      "lower_95": 0.0916179405,
+      "upper_95": 0.1315238305,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "auroc_with": 0.5319047299999999,
+      "auroc_without": 0.6442857399999999,
+      "auroc_change_with_minus_without": -0.11238100999999999,
+      "interval": "paired bootstrap over repeat means"
+    },
+    {
+      "test": "auroc_loss_from_adding_layer",
+      "unit": "validation_weighted_ensemble: AUROC without genotype minus with genotype",
+      "components": [
+        "validation_weighted_ensemble",
+        "genotype"
+      ],
+      "count": null,
+      "denominator": null,
+      "estimate": 0.006714310000000001,
+      "lower_95": 0.002285739750000003,
+      "upper_95": 0.011952400000000002,
+      "acceptable_limit": 0.02,
+      "limit_recorded": "2026-11-12",
+      "decision": "supports reliance",
+      "auroc_with": 0.7057143100000001,
+      "auroc_without": 0.7124286200000001,
+      "auroc_change_with_minus_without": -0.006714310000000001,
+      "interval": "paired bootstrap over repeat means"
+    }
+  ],
+  "flags": [
+    {
+      "flag": "layer_not_above_chance",
+      "components": [
+        "genotype"
+      ],
+      "rule": "no solo held-out AUROC interval for this layer lies above 0.5",
+      "wording": "held-out performance does not exceed chance"
+    }
+  ],
+  "notes": [
+    "bootstrap seed 2026, 10000 repeat resamples, 2000 patient resamples",
+    "folds within a repeat share training patients, so intervals are optimistic about new patients",
+    "decisions use the interval over repeat means; flags use the patient interval when out-of-fold predictions are given"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}

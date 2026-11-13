@@ -1,0 +1,9 @@
+{
+  "recorded": "2026-11-12",
+  "purpose": "Illustrative limits for the worked examples only. They are not recommendations; each team records its own limits before running the test.",
+  "limits": {
+    "agreed_answer_error_rate": 0.05,
+    "unanimous_wrong_rate": 0.10,
+    "auroc_loss_from_adding_layer": 0.02
+  }
+}

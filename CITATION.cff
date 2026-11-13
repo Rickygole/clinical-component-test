@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "cctest: pre-release checks for clinical AI systems that combine components"
+type: software
+version: 0.1.0
+date-released: 2026-11-12
+license:
+  - MIT
+  - CC-BY-4.0
+authors:
+  - family-names: Gole
+    given-names: Ricky
+abstract: "First public version of a pre-release test with two modules: an agreement test for combined language models and a data-layer test for multi-input fusion models."
+references:
+  - type: conference-paper
+    title: "Detecting and Mitigating Convergent Failures in Clinical LLM Ensembles"
+    authors:
+      - family-names: Gole
+        given-names: Ricky
+      - family-names: Dacon
+        given-names: Jamell
+    collection-title: "IEEE International Conference on Data Mining (ICDM)"
+    year: 2026
+  - type: conference-paper
+    title: "Diagnosing and Mitigating Modality Dominance in Multi-Omic Antidepressant Response Prediction"
+    authors:
+      - family-names: Gole
+        given-names: Ricky
+      - family-names: Soji-John
+        given-names: Oluwasegun
+      - family-names: Chambers
+        given-names: Gabriel
+      - family-names: Iweha
+        given-names: Sharon
+      - family-names: Blake
+        given-names: Peyton
+      - family-names: Dacon
+        given-names: Jamell
+    collection-title: "IEEE BIBM 2026 Workshop"
+    year: 2026

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cctest"
+version = "0.1.0"
+description = "Pre-release checks for clinical AI systems that combine components: agreement among combined language models and the effect of each added data layer."
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Ricky Gole"}]
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.22", "scipy>=1.8"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+cctest = "cctest.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
