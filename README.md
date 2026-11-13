@@ -1,5 +1,9 @@
 # cctest
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24183595.svg)](https://doi.org/10.5281/zenodo.24183595)
+
+Version 0.1.0 is archived at https://doi.org/10.5281/zenodo.24183595. To cite every version, use the concept DOI 10.5281/zenodo.24183594.
+
 cctest: pre-release checks for clinical AI systems that combine components. This is the first public version (v0.1.0). It packages two checks and reproduces the published analyses they come from. It is designed to let teams check, before deployment, two things about a system built from several parts.
 
 1. Agreement test for combined language models. When several models answer the same multiple-choice question and all agree, how often is the shared answer wrong, and do the models share wrong answers more often than a permutation baseline predicts?
