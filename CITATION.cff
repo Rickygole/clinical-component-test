@@ -4,13 +4,14 @@ title: "cctest: pre-release checks for clinical AI systems that combine componen
 type: software
 version: 0.1.2
 date-released: 2026-11-12
+doi: 10.5281/zenodo.24183594
 license:
   - MIT
   - CC-BY-4.0
 authors:
   - family-names: Gole
     given-names: Ricky
-abstract: "Version 0.1.2 (the v0.1.0 code plus an outside-data run, a pre-registered negative control and a layer test on public multi-omic benchmarks) of a pre-release test with two modules: an agreement test for combined language models and a data-layer test for multi-input fusion models."
+abstract: "Version 0.1.2 (the v0.1.0 code plus an outside-data run, an implementation check planned in advance and a layer test on public multi-omic benchmarks) of a pre-release test with two modules: an agreement test for combined language models and a data-layer test for multi-input fusion models."
 references:
   - type: conference-paper
     title: "Detecting and Mitigating Convergent Failures in Clinical LLM Ensembles"

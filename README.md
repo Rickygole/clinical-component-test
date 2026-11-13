@@ -86,9 +86,9 @@ Decision values: `supports reliance`, `fails`, `inconclusive`, `no limit recorde
 
 The agreement test was run, unchanged, on MedQA outputs that Stanford CRFM published for ten models in HELM Lite. The panels and the extraction rule were committed before the outside files were downloaded. Both five-model panels raise the convergent_failure flag. See [outside/RESULTS_v0.1.1.md](outside/RESULTS_v0.1.1.md).
 
-## Negative control and public multi-omic benchmarks (v0.1.2)
+## Implementation check and public multi-omic benchmarks (v0.1.2)
 
-Negative control: for seven real configurations, every model's correctness was kept and its wrong answers were redrawn independently, so shared errors are absent by construction. The plan was committed before any replicate was generated. The flag fired in 47 of 1,400 replicates (3.4%, 2.5% to 4.4%), and in all seven real datasets. See [controls/negative/RESULTS_v0.1.2.md](controls/negative/RESULTS_v0.1.2.md).
+Implementation check: for seven real configurations, every model's correctness was kept and its wrong answers were redrawn independently, so shared wrong-letter choices are absent by construction (the questions every model gets wrong are kept). The plan was committed in advance. The flag fired in 47 of 1,400 replicates (3.4%, 2.5% to 4.4%), as expected by construction for this null, and in all seven real datasets. This checks that the flag is implemented and calibrated correctly; it does not establish specificity on real data, which remains open. See [controls/negative/RESULTS_v0.1.2.md](controls/negative/RESULTS_v0.1.2.md).
 
 Layer test on public benchmarks: the unchanged layer test was run on the ROSMAP and BRCA benchmarks with an added noise layer, results already reported in the SGOF paper. It flags the noise layer in both and reproduces the published losses. See [outside_layers/RESULTS_v0.1.2.md](outside_layers/RESULTS_v0.1.2.md).
 

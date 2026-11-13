@@ -2,9 +2,9 @@
 
 ## v0.1.2 (2026-11-12)
 
-Negative control and public multi-omic benchmarks. The package code, flag rule, baselines, intervals and limits are unchanged from v0.1.0, so `cctest.__version__` and every report's tool_version remain 0.1.0.
+Implementation check and public multi-omic benchmarks. The package code, flag rule, baselines, intervals and limits are unchanged from v0.1.0, so `cctest.__version__` and every report's tool_version remain 0.1.0.
 
-- controls/negative/: a negative control planned and committed (commit abea6c8) before any replicate was generated. For seven real configurations, correctness was kept and wrong answers were redrawn independently, 200 replicates each. The flag fired in 47 of 1,400 replicates (3.4%, Wilson 95% interval 2.5% to 4.4%), at or below 5% in every configuration, and in all seven real datasets. summarize.py reproduces the table.
+- controls/negative/: an exchangeability (implementation) check, planned and committed in advance (commit abea6c8). For seven real configurations, correctness was kept and wrong answers were redrawn independently, 200 replicates each. The flag fired in 47 of 1,400 replicates (3.4%, Wilson 95% interval 2.5% to 4.4%), every configuration's rate consistent with 5% or below (every interval includes 5% or lies below it), as expected by construction, and in all seven real datasets. A post-results correction in RESULTS explains why this does not establish specificity on real data, which remains open. summarize.py reproduces the table.
 - outside_layers/: the layer test on the public ROSMAP and BRCA benchmarks with a synthetic noise layer, from runs already reported in the SGOF paper. The noise layer is flagged as not exceeding chance in both datasets, and the published losses are reproduced. This is not a prospective test.
 
 ## v0.1.1 (2026-11-12)
