@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.1.0 (unreleased, built 2026-11-12)
+## v0.1.0 (2026-11-12)
 
 First public version.
 
@@ -11,8 +11,6 @@ Contents:
 - Data: `data/icdm2026` (answer letters, no question text) and `data/sgof2026` (fold AUROCs, out-of-fold predictions with anonymous ids, label-permutation null).
 - `make test`: 36 known-answer and input-validation tests pass. `make reproduce`: ICDM 35 of 35 pass, SGOF 44 pass and 2 documented differences, 0 fail.
 - PROTOCOL.md and PROTOCOL.pdf, NOTICE, LICENSE (MIT), CITATION.cff.
-
-CITATION.cff carries no release date yet. The date-released field is added at tagging and equals the tag date.
 
 ### Reproduction differences
 

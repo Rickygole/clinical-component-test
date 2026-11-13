@@ -3,6 +3,7 @@ message: "If you use this software, please cite it using the metadata below."
 title: "cctest: pre-release checks for clinical AI systems that combine components"
 type: software
 version: 0.1.0
+date-released: 2026-11-12
 license:
   - MIT
   - CC-BY-4.0
