@@ -74,7 +74,7 @@ Decision values: `supports reliance`, `fails`, `inconclusive`, `no limit recorde
     make test
     make reproduce
 
-`make test` runs 35 tests, which pass. They include Wilson intervals checked against a reference implementation, the zero-event and all-wrong cases, and rejection of malformed input (labels that are not 0 or 1, labels that change across repeats, misaligned repeats, impossible option counts).
+`make test` runs 36 tests, which pass. They include Wilson intervals checked against a reference implementation, the zero-event and all-wrong cases, and rejection of malformed input (labels that are not 0 or 1, labels that change across repeats, misaligned repeats, impossible option counts).
 
 `make reproduce` recomputes 81 numbers from the two source papers using the shipped files and compares each at the printed precision. Current result: ICDM 2026, 35 of 35 checks pass. SGOF, 44 pass and 2 documented differences, 0 fail. The two differences are the bounds of the patient-level interval for the SGOF change (CHANGELOG, difference 4). The differences and other findings are listed in [CHANGELOG.md](CHANGELOG.md) and are not tuned away.
 
@@ -97,7 +97,7 @@ Code: MIT, see [LICENSE](LICENSE). Shipped data files under `data/` are CC BY 4.
 - One multi-omic cohort of 111 patients, and two exam datasets. Results from them do not carry to other settings.
 - Model outputs were collected in April to May 2026. Hosted models change over time.
 - The permutation baseline does not flag a shared letter preference: if every model always picks the same wrong letter for a given correct letter, the test attributes it to individual tendencies. A test documents this.
-- Folds within a repeat share training patients, so layer intervals are optimistic about new patients. Both AUROC intervals resample fixed predictions and ignore retraining. The interval over repeat means reflects split-to-split variation only and narrows as repeats are added without new patients, so it is not a sampling interval. Decisions use the patient interval whenever out-of-fold predictions are supplied.
+- Folds within a repeat share training patients, so layer intervals are optimistic about new patients. Both AUROC intervals resample fixed predictions and ignore retraining. The interval over repeat means reflects split-to-split variation only and narrows as repeats are added without new patients, so it is not a sampling interval. Decisions use the patient interval whenever out-of-fold predictions are supplied. Without them, a layer decision of "supports reliance" rests on the interval over repeat means and is provisional.
 - The flag rule was fixed on 2026-11-12, the same day the worked examples were re-analysed. The examples are not a prospective test of the rule.
 - Discrete outputs only (answer letters, binary labels). Free text is not handled in v0.1.
 - Results are evidence for a developer's decision, not a safety certification or a clinical safety finding.

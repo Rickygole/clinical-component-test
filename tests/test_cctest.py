@@ -219,3 +219,25 @@ def test_cli_missing_file_exits_cleanly(tmp_path, capsys):
 
 def test_empty_denominator_with_limit_is_not_estimable():
     assert decide(float("nan"), float("nan"), 0.1) == "not estimable (empty denominator)"
+
+
+def test_out_of_fold_predictions_switch_decision_to_patient_interval(tmp_path):
+    rng = np.random.default_rng(3)
+    y = np.array([0, 1] * 20)
+    rows, frows = [], []
+    for r in range(3):
+        for i, lab in enumerate(y):
+            s = 0.5 + (0.3 if lab else -0.3) * rng.random()
+            rows.append(["m", "noise", "with", r, f"p{i}", s, lab])
+            rows.append(["m", "noise", "without", r, f"p{i}", min(1.0, s + 0.05 * rng.random()), lab])
+        for k in range(2):
+            frows.append(["m", "noise", "with", r, k, 0.70])
+            frows.append(["m", "noise", "without", r, k, 0.70])
+    o = write(tmp_path, rows, "o.csv", ["model_id", "layer", "condition", "repeat", "patient_id", "probability", "label"])
+    f = write(tmp_path, frows, "f.csv", ["model_id", "layer", "condition", "repeat", "fold", "auroc"])
+    folds_only = [e for e in layers.run(f, b=200)["entries"] if e["test"] == "auroc_loss_from_adding_layer"][0]
+    both = [e for e in layers.run(f, o, b=200, b_patient=200)["entries"] if e["test"] == "auroc_loss_from_adding_layer"][0]
+    assert folds_only["interval"] == "paired bootstrap over repeat means" and folds_only["upper_95"] == 0.0
+    assert both["interval"] == "paired bootstrap over patients"
+    assert (both["lower_95"], both["upper_95"]) == (both["patient_lower_95"], both["patient_upper_95"])
+    assert both["repeat_lower_95"] == both["repeat_upper_95"] == 0.0 and both["lower_95"] < both["upper_95"]
