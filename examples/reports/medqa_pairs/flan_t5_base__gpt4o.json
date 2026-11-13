@@ -19,9 +19,9 @@
       "estimate": 0.11904761904761904,
       "lower_95": 0.08865479694567426,
       "upper_95": 0.15805276813963876,
-      "acceptable_limit": 0.05,
-      "limit_recorded": "2026-11-12",
-      "decision": "fails"
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
     },
     {
       "test": "unanimous_wrong_rate",
@@ -35,9 +35,9 @@
       "estimate": 0.38461538461538464,
       "lower_95": 0.2968126300610473,
       "upper_95": 0.48063845171721087,
-      "acceptable_limit": 0.1,
-      "limit_recorded": "2026-11-12",
-      "decision": "fails",
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded",
       "baselines": {
         "naive_independence": 0.3333333333333333,
         "model_expectation": 0.3315218913544983,

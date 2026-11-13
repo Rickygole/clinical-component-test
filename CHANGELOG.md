@@ -27,6 +27,6 @@ These are reported, not tuned.
 
 ### Other observations
 
-- The control configuration with Flan-T5, Llama and Qwen raises the convergent_failure flag (25.5% against a 95th percentile of 14.7%); the pair of Flan-T5 and GPT-4o does not (38.5% against 39.4%). Both reports are in examples/reports/. See PROTOCOL.md, section 8, on specificity.
+- The control configuration with Flan-T5, Llama and Qwen raises the convergent_failure flag (25.5% against a 95th percentile of 14.7%); the pair of Flan-T5 and GPT-4o does not (38.5% against 39.4%). Reports for all 15 two-model MedQA pairs are in examples/reports/medqa_pairs/, and 14 of them raise the flag. See PROTOCOL.md, section 8, on specificity.
 - The 22.5% figure in the ICDM paper reproduces as 117 of 520 cases with agreed answers.
 - Only the genotype layer is flagged. The expression layer's patient-level lower bound is 0.526.
