@@ -1,0 +1,98 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "agreement",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "helm_lite_medqa_answers.csv": "dc4963b0f7ba742c07a13572f2a527ecc44ef848ef4187f10e61087a41e0e812"
+  },
+  "entries": [
+    {
+      "test": "agreed_answer_error_rate",
+      "unit": "5 models: meta_llama-3.1-405b-instruct-turbo, qwen_qwen2.5-72b-instruct-turbo, google_gemini-1.5-pro-002, deepseek-ai_deepseek-v3, openai_gpt-4o-2024-08-06; denominator: cases where all models give the same answer",
+      "components": [
+        "meta_llama-3.1-405b-instruct-turbo",
+        "qwen_qwen2.5-72b-instruct-turbo",
+        "google_gemini-1.5-pro-002",
+        "deepseek-ai_deepseek-v3",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "count": 20,
+      "denominator": 630,
+      "estimate": 0.031746031746031744,
+      "lower_95": 0.020643138488537546,
+      "upper_95": 0.04852472393287015,
+      "acceptable_limit": 0.05,
+      "limit_recorded": "2026-11-12",
+      "decision": "supports reliance"
+    },
+    {
+      "test": "unanimous_wrong_rate",
+      "unit": "5 models: meta_llama-3.1-405b-instruct-turbo, qwen_qwen2.5-72b-instruct-turbo, google_gemini-1.5-pro-002, deepseek-ai_deepseek-v3, openai_gpt-4o-2024-08-06; denominator: cases all models answered wrongly",
+      "components": [
+        "meta_llama-3.1-405b-instruct-turbo",
+        "qwen_qwen2.5-72b-instruct-turbo",
+        "google_gemini-1.5-pro-002",
+        "deepseek-ai_deepseek-v3",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "count": 20,
+      "denominator": 41,
+      "estimate": 0.4878048780487805,
+      "lower_95": 0.34254429554432664,
+      "upper_95": 0.6351549134845619,
+      "acceptable_limit": 0.1,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "baselines": {
+        "naive_independence": 0.012345679012345677,
+        "model_expectation": 0.013524797545080205,
+        "permutation_mean": 0.0264390243902439,
+        "permutation_95th_percentile": 0.07317073170731707,
+        "permutation_n": 10000,
+        "permutation_seed": 42,
+        "ratio_to_naive": 39.51219512195123,
+        "ratio_to_model_expectation": 36.06744399854066,
+        "ratio_to_permutation_mean": 18.45018450184502
+      }
+    },
+    {
+      "test": "agreed_wrong_exposure",
+      "unit": "5 models: meta_llama-3.1-405b-instruct-turbo, qwen_qwen2.5-72b-instruct-turbo, google_gemini-1.5-pro-002, deepseek-ai_deepseek-v3, openai_gpt-4o-2024-08-06; denominator: all scored cases",
+      "components": [
+        "meta_llama-3.1-405b-instruct-turbo",
+        "qwen_qwen2.5-72b-instruct-turbo",
+        "google_gemini-1.5-pro-002",
+        "deepseek-ai_deepseek-v3",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "count": 20,
+      "denominator": 998,
+      "estimate": 0.02004008016032064,
+      "lower_95": 0.013009775481121507,
+      "upper_95": 0.030751099490355094,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    }
+  ],
+  "flags": [
+    {
+      "flag": "convergent_failure",
+      "components": [
+        "meta_llama-3.1-405b-instruct-turbo",
+        "qwen_qwen2.5-72b-instruct-turbo",
+        "google_gemini-1.5-pro-002",
+        "deepseek-ai_deepseek-v3",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "rule": "unanimous_wrong_rate above the 95th percentile of the permutation baseline",
+      "observed": 0.4878048780487805,
+      "threshold": 0.07317073170731707
+    }
+  ],
+  "notes": [
+    "2 of 1000 cases unscored: at least one missing or invalid answer"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}

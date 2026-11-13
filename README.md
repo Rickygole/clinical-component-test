@@ -1,8 +1,8 @@
 # cctest
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24183595.svg)](https://doi.org/10.5281/zenodo.24183595)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24183594.svg)](https://doi.org/10.5281/zenodo.24183594)
 
-Version 0.1.0 is archived at https://doi.org/10.5281/zenodo.24183595. To cite every version, use the concept DOI 10.5281/zenodo.24183594.
+Every version is archived on Zenodo. The concept DOI 10.5281/zenodo.24183594 resolves to the latest version. Version 0.1.0: https://doi.org/10.5281/zenodo.24183595.
 
 cctest: pre-release checks for clinical AI systems that combine components. This is the first public version (v0.1.0). It packages two checks and reproduces the published analyses they come from. It is designed to let teams check, before deployment, two things about a system built from several parts.
 
@@ -81,6 +81,10 @@ Decision values: `supports reliance`, `fails`, `inconclusive`, `no limit recorde
 `make test` runs 36 tests, which pass. They include Wilson intervals checked against a reference implementation, the zero-event and all-wrong cases, and rejection of malformed input (labels that are not 0 or 1, labels that change across repeats, misaligned repeats, impossible option counts).
 
 `make reproduce` recomputes 81 values from the two source papers (80 printed values and one rerun target, the 520 agreed cases) using the shipped files and compares each at the printed precision. Current result: ICDM 2026, 35 of 35 checks pass. SGOF, 44 pass and 2 documented differences, 0 fail. The two differences are the bounds of the patient-level interval for the SGOF change (CHANGELOG, difference 4). The differences and other findings are listed in [CHANGELOG.md](CHANGELOG.md) and are not tuned away.
+
+## Outside-data run (v0.1.1)
+
+The agreement test was run, unchanged, on MedQA outputs that Stanford CRFM published for ten models in HELM Lite. The panels and the extraction rule were committed before the outside files were downloaded. Both five-model panels raise the convergent_failure flag. See [outside/RESULTS_v0.1.1.md](outside/RESULTS_v0.1.1.md).
 
 ## Data and sources
 

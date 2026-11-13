@@ -1,0 +1,86 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "agreement",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "helm_lite_medqa_answers.csv": "dc4963b0f7ba742c07a13572f2a527ecc44ef848ef4187f10e61087a41e0e812"
+  },
+  "entries": [
+    {
+      "test": "agreed_answer_error_rate",
+      "unit": "2 models: qwen_qwen2.5-72b-instruct-turbo, openai_gpt-4o-2024-08-06; denominator: cases where all models give the same answer",
+      "components": [
+        "qwen_qwen2.5-72b-instruct-turbo",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "count": 61,
+      "denominator": 779,
+      "estimate": 0.07830551989730423,
+      "lower_95": 0.0614421940115631,
+      "upper_95": 0.09930741550741547,
+      "acceptable_limit": 0.05,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails"
+    },
+    {
+      "test": "unanimous_wrong_rate",
+      "unit": "2 models: qwen_qwen2.5-72b-instruct-turbo, openai_gpt-4o-2024-08-06; denominator: cases all models answered wrongly",
+      "components": [
+        "qwen_qwen2.5-72b-instruct-turbo",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "count": 61,
+      "denominator": 93,
+      "estimate": 0.6559139784946236,
+      "lower_95": 0.5549092077246491,
+      "upper_95": 0.7445493129663152,
+      "acceptable_limit": 0.1,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "baselines": {
+        "naive_independence": 0.3333333333333333,
+        "model_expectation": 0.33680067556048104,
+        "permutation_mean": 0.3509666666666667,
+        "permutation_95th_percentile": 0.43010752688172044,
+        "permutation_n": 10000,
+        "permutation_seed": 42,
+        "ratio_to_naive": 1.967741935483871,
+        "ratio_to_model_expectation": 1.9474841533589435,
+        "ratio_to_permutation_mean": 1.868878274749616
+      }
+    },
+    {
+      "test": "agreed_wrong_exposure",
+      "unit": "2 models: qwen_qwen2.5-72b-instruct-turbo, openai_gpt-4o-2024-08-06; denominator: all scored cases",
+      "components": [
+        "qwen_qwen2.5-72b-instruct-turbo",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "count": 61,
+      "denominator": 1000,
+      "estimate": 0.061,
+      "lower_95": 0.0477797751260337,
+      "upper_95": 0.07758011882428367,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    }
+  ],
+  "flags": [
+    {
+      "flag": "convergent_failure",
+      "components": [
+        "qwen_qwen2.5-72b-instruct-turbo",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "rule": "unanimous_wrong_rate above the 95th percentile of the permutation baseline",
+      "observed": 0.6559139784946236,
+      "threshold": 0.43010752688172044
+    }
+  ],
+  "notes": [
+    "0 of 1000 cases unscored: at least one missing or invalid answer"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}

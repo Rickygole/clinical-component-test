@@ -1,0 +1,86 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "agreement",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "helm_lite_medqa_answers.csv": "dc4963b0f7ba742c07a13572f2a527ecc44ef848ef4187f10e61087a41e0e812"
+  },
+  "entries": [
+    {
+      "test": "agreed_answer_error_rate",
+      "unit": "2 models: meta_llama-3.1-405b-instruct-turbo, google_gemini-1.5-pro-002; denominator: cases where all models give the same answer",
+      "components": [
+        "meta_llama-3.1-405b-instruct-turbo",
+        "google_gemini-1.5-pro-002"
+      ],
+      "count": 58,
+      "denominator": 772,
+      "estimate": 0.07512953367875648,
+      "lower_95": 0.05856585969044295,
+      "upper_95": 0.09590056828681068,
+      "acceptable_limit": 0.05,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails"
+    },
+    {
+      "test": "unanimous_wrong_rate",
+      "unit": "2 models: meta_llama-3.1-405b-instruct-turbo, google_gemini-1.5-pro-002; denominator: cases all models answered wrongly",
+      "components": [
+        "meta_llama-3.1-405b-instruct-turbo",
+        "google_gemini-1.5-pro-002"
+      ],
+      "count": 58,
+      "denominator": 89,
+      "estimate": 0.651685393258427,
+      "lower_95": 0.5482931796636432,
+      "upper_95": 0.7425251717815387,
+      "acceptable_limit": 0.1,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "baselines": {
+        "naive_independence": 0.33333333333333337,
+        "model_expectation": 0.33155451794840385,
+        "permutation_mean": 0.3772213483146067,
+        "permutation_95th_percentile": 0.4606741573033708,
+        "permutation_n": 10000,
+        "permutation_seed": 42,
+        "ratio_to_naive": 1.9550561797752808,
+        "ratio_to_model_expectation": 1.9655452059315373,
+        "ratio_to_permutation_mean": 1.7275941464344546
+      }
+    },
+    {
+      "test": "agreed_wrong_exposure",
+      "unit": "2 models: meta_llama-3.1-405b-instruct-turbo, google_gemini-1.5-pro-002; denominator: all scored cases",
+      "components": [
+        "meta_llama-3.1-405b-instruct-turbo",
+        "google_gemini-1.5-pro-002"
+      ],
+      "count": 58,
+      "denominator": 998,
+      "estimate": 0.05811623246492986,
+      "lower_95": 0.04522426330696773,
+      "upper_95": 0.07439691803420384,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    }
+  ],
+  "flags": [
+    {
+      "flag": "convergent_failure",
+      "components": [
+        "meta_llama-3.1-405b-instruct-turbo",
+        "google_gemini-1.5-pro-002"
+      ],
+      "rule": "unanimous_wrong_rate above the 95th percentile of the permutation baseline",
+      "observed": 0.651685393258427,
+      "threshold": 0.4606741573033708
+    }
+  ],
+  "notes": [
+    "2 of 1000 cases unscored: at least one missing or invalid answer"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}

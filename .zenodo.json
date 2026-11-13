@@ -5,5 +5,5 @@
   "creators": [{"name": "Gole, Ricky", "affiliation": "Morgan State University"}],
   "license": "MIT",
   "keywords": ["clinical AI", "evaluation", "language model ensembles", "multi-omic fusion", "pre-release testing"],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

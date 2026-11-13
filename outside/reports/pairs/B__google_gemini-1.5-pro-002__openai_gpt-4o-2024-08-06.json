@@ -1,0 +1,86 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "agreement",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "helm_lite_medqa_answers.csv": "dc4963b0f7ba742c07a13572f2a527ecc44ef848ef4187f10e61087a41e0e812"
+  },
+  "entries": [
+    {
+      "test": "agreed_answer_error_rate",
+      "unit": "2 models: google_gemini-1.5-pro-002, openai_gpt-4o-2024-08-06; denominator: cases where all models give the same answer",
+      "components": [
+        "google_gemini-1.5-pro-002",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "count": 62,
+      "denominator": 786,
+      "estimate": 0.07888040712468193,
+      "lower_95": 0.06201891719260054,
+      "upper_95": 0.09983819652687063,
+      "acceptable_limit": 0.05,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails"
+    },
+    {
+      "test": "unanimous_wrong_rate",
+      "unit": "2 models: google_gemini-1.5-pro-002, openai_gpt-4o-2024-08-06; denominator: cases all models answered wrongly",
+      "components": [
+        "google_gemini-1.5-pro-002",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "count": 62,
+      "denominator": 85,
+      "estimate": 0.7294117647058823,
+      "lower_95": 0.6265804034631293,
+      "upper_95": 0.8124038333751293,
+      "acceptable_limit": 0.1,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "baselines": {
+        "naive_independence": 0.33333333333333326,
+        "model_expectation": 0.3372860356823965,
+        "permutation_mean": 0.3525788235294118,
+        "permutation_95th_percentile": 0.43529411764705883,
+        "permutation_n": 10000,
+        "permutation_seed": 42,
+        "ratio_to_naive": 2.1882352941176473,
+        "ratio_to_model_expectation": 2.1625910578543155,
+        "ratio_to_permutation_mean": 2.0687906250417094
+      }
+    },
+    {
+      "test": "agreed_wrong_exposure",
+      "unit": "2 models: google_gemini-1.5-pro-002, openai_gpt-4o-2024-08-06; denominator: all scored cases",
+      "components": [
+        "google_gemini-1.5-pro-002",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "count": 62,
+      "denominator": 1000,
+      "estimate": 0.062,
+      "lower_95": 0.04866418011998064,
+      "upper_95": 0.07868806031336564,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    }
+  ],
+  "flags": [
+    {
+      "flag": "convergent_failure",
+      "components": [
+        "google_gemini-1.5-pro-002",
+        "openai_gpt-4o-2024-08-06"
+      ],
+      "rule": "unanimous_wrong_rate above the 95th percentile of the permutation baseline",
+      "observed": 0.7294117647058823,
+      "threshold": 0.43529411764705883
+    }
+  ],
+  "notes": [
+    "0 of 1000 cases unscored: at least one missing or invalid answer"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}

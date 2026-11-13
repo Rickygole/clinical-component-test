@@ -1,0 +1,98 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "agreement",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "helm_lite_medqa_answers.csv": "dc4963b0f7ba742c07a13572f2a527ecc44ef848ef4187f10e61087a41e0e812"
+  },
+  "entries": [
+    {
+      "test": "agreed_answer_error_rate",
+      "unit": "5 models: meta_llama-3.1-8b-instruct-turbo, qwen_qwen2.5-7b-instruct-turbo, google_gemma-2-9b-it, openai_gpt-4o-mini-2024-07-18, mistralai_mistral-7b-instruct-v0.3; denominator: cases where all models give the same answer",
+      "components": [
+        "meta_llama-3.1-8b-instruct-turbo",
+        "qwen_qwen2.5-7b-instruct-turbo",
+        "google_gemma-2-9b-it",
+        "openai_gpt-4o-mini-2024-07-18",
+        "mistralai_mistral-7b-instruct-v0.3"
+      ],
+      "count": 20,
+      "denominator": 111,
+      "estimate": 0.18018018018018017,
+      "lower_95": 0.11977587290242195,
+      "upper_95": 0.26198050036992815,
+      "acceptable_limit": 0.05,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails"
+    },
+    {
+      "test": "unanimous_wrong_rate",
+      "unit": "5 models: meta_llama-3.1-8b-instruct-turbo, qwen_qwen2.5-7b-instruct-turbo, google_gemma-2-9b-it, openai_gpt-4o-mini-2024-07-18, mistralai_mistral-7b-instruct-v0.3; denominator: cases all models answered wrongly",
+      "components": [
+        "meta_llama-3.1-8b-instruct-turbo",
+        "qwen_qwen2.5-7b-instruct-turbo",
+        "google_gemma-2-9b-it",
+        "openai_gpt-4o-mini-2024-07-18",
+        "mistralai_mistral-7b-instruct-v0.3"
+      ],
+      "count": 20,
+      "denominator": 104,
+      "estimate": 0.19230769230769232,
+      "lower_95": 0.12808145190298775,
+      "upper_95": 0.2784547661723673,
+      "acceptable_limit": 0.1,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "baselines": {
+        "naive_independence": 0.012345679012345677,
+        "model_expectation": 0.0221542851602024,
+        "permutation_mean": 0.039931730769230775,
+        "permutation_95th_percentile": 0.0673076923076923,
+        "permutation_n": 10000,
+        "permutation_seed": 42,
+        "ratio_to_naive": 15.57692307692308,
+        "ratio_to_model_expectation": 8.68038354282587,
+        "ratio_to_permutation_mean": 4.815911772496327
+      }
+    },
+    {
+      "test": "agreed_wrong_exposure",
+      "unit": "5 models: meta_llama-3.1-8b-instruct-turbo, qwen_qwen2.5-7b-instruct-turbo, google_gemma-2-9b-it, openai_gpt-4o-mini-2024-07-18, mistralai_mistral-7b-instruct-v0.3; denominator: all scored cases",
+      "components": [
+        "meta_llama-3.1-8b-instruct-turbo",
+        "qwen_qwen2.5-7b-instruct-turbo",
+        "google_gemma-2-9b-it",
+        "openai_gpt-4o-mini-2024-07-18",
+        "mistralai_mistral-7b-instruct-v0.3"
+      ],
+      "count": 20,
+      "denominator": 997,
+      "estimate": 0.020060180541624874,
+      "lower_95": 0.013022861131119959,
+      "upper_95": 0.030781737923312846,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    }
+  ],
+  "flags": [
+    {
+      "flag": "convergent_failure",
+      "components": [
+        "meta_llama-3.1-8b-instruct-turbo",
+        "qwen_qwen2.5-7b-instruct-turbo",
+        "google_gemma-2-9b-it",
+        "openai_gpt-4o-mini-2024-07-18",
+        "mistralai_mistral-7b-instruct-v0.3"
+      ],
+      "rule": "unanimous_wrong_rate above the 95th percentile of the permutation baseline",
+      "observed": 0.19230769230769232,
+      "threshold": 0.0673076923076923
+    }
+  ],
+  "notes": [
+    "3 of 1000 cases unscored: at least one missing or invalid answer"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}

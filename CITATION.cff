@@ -2,9 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it using the metadata below."
 title: "cctest: pre-release checks for clinical AI systems that combine components"
 type: software
-version: 0.1.0
+version: 0.1.1
 date-released: 2026-11-12
-doi: 10.5281/zenodo.24183595
 license:
   - MIT
   - CC-BY-4.0

@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.1.1 (2026-11-12)
+
+Outside-data run. The package code, flag rule, baselines, intervals and limits are unchanged from v0.1.0.
+
+- outside/PLAN_v0.1.1.md: panels, extraction rule and analyses, committed before any outside prediction file was downloaded.
+- outside/SOURCES.tsv: download time, URL and SHA-256 of the 30 source files (Stanford CRFM HELM Lite v1.13.0, MedQA).
+- outside/extract_helm.py and outside/data/helm_lite_medqa_answers.csv: answer letters only, no question text.
+- outside/reports/: two five-model panels and 20 two-model pairs, run with the v0.1.0 code.
+- outside/RESULTS_v0.1.1.md: both panels raise the convergent_failure flag (19.2% and 48.8% unanimous-wrong against 95th percentiles of 6.7% and 7.3%), and 18 of 20 pairs raise it. Both pairs that do not include the near-random model in panel A.
+
 ## v0.1.0 (2026-11-12)
 
 First public version.

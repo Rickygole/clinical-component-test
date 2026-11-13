@@ -1,0 +1,86 @@
+{
+  "tool": "cctest",
+  "tool_version": "0.1.0",
+  "module": "agreement",
+  "run_date": "2026-11-12",
+  "inputs": {
+    "helm_lite_medqa_answers.csv": "dc4963b0f7ba742c07a13572f2a527ecc44ef848ef4187f10e61087a41e0e812"
+  },
+  "entries": [
+    {
+      "test": "agreed_answer_error_rate",
+      "unit": "2 models: openai_gpt-4o-mini-2024-07-18, mistralai_mistral-7b-instruct-v0.3; denominator: cases where all models give the same answer",
+      "components": [
+        "openai_gpt-4o-mini-2024-07-18",
+        "mistralai_mistral-7b-instruct-v0.3"
+      ],
+      "count": 128,
+      "denominator": 573,
+      "estimate": 0.22338568935427575,
+      "lower_95": 0.19118798731040942,
+      "upper_95": 0.2592676012180557,
+      "acceptable_limit": 0.05,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails"
+    },
+    {
+      "test": "unanimous_wrong_rate",
+      "unit": "2 models: openai_gpt-4o-mini-2024-07-18, mistralai_mistral-7b-instruct-v0.3; denominator: cases all models answered wrongly",
+      "components": [
+        "openai_gpt-4o-mini-2024-07-18",
+        "mistralai_mistral-7b-instruct-v0.3"
+      ],
+      "count": 128,
+      "denominator": 205,
+      "estimate": 0.624390243902439,
+      "lower_95": 0.5563818862361105,
+      "upper_95": 0.6878224986977606,
+      "acceptable_limit": 0.1,
+      "limit_recorded": "2026-11-12",
+      "decision": "fails",
+      "baselines": {
+        "naive_independence": 0.33333333333333337,
+        "model_expectation": 0.360180777122503,
+        "permutation_mean": 0.3725951219512194,
+        "permutation_95th_percentile": 0.424390243902439,
+        "permutation_n": 10000,
+        "permutation_seed": 42,
+        "ratio_to_naive": 1.873170731707317,
+        "ratio_to_model_expectation": 1.733546828597336,
+        "ratio_to_permutation_mean": 1.6757874891990263
+      }
+    },
+    {
+      "test": "agreed_wrong_exposure",
+      "unit": "2 models: openai_gpt-4o-mini-2024-07-18, mistralai_mistral-7b-instruct-v0.3; denominator: all scored cases",
+      "components": [
+        "openai_gpt-4o-mini-2024-07-18",
+        "mistralai_mistral-7b-instruct-v0.3"
+      ],
+      "count": 128,
+      "denominator": 999,
+      "estimate": 0.12812812812812813,
+      "lower_95": 0.10881743221327969,
+      "upper_95": 0.1502877897888685,
+      "acceptable_limit": null,
+      "limit_recorded": null,
+      "decision": "no limit recorded"
+    }
+  ],
+  "flags": [
+    {
+      "flag": "convergent_failure",
+      "components": [
+        "openai_gpt-4o-mini-2024-07-18",
+        "mistralai_mistral-7b-instruct-v0.3"
+      ],
+      "rule": "unanimous_wrong_rate above the 95th percentile of the permutation baseline",
+      "observed": 0.624390243902439,
+      "threshold": 0.424390243902439
+    }
+  ],
+  "notes": [
+    "1 of 1000 cases unscored: at least one missing or invalid answer"
+  ],
+  "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
+}
