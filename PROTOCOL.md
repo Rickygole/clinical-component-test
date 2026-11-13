@@ -27,19 +27,20 @@ Layers module (unit: a patient, held out in every fold).
 - Proportions: Wilson score interval, 95%.
 - AUROC, over repeats: percentile interval from 10,000 bootstrap resamples of the repeat-level means, paired across with and without, seed 2026.
 - AUROC, over patients (when out-of-fold predictions are supplied): 2,000 patient resamples, AUROC averaged over repeats in each resample, seed 2026.
-- These are standard methods. No novelty is claimed for them. Folds within a repeat share training patients, so the intervals are optimistic about new patients.
+- Decisions and flags use the patient interval when out-of-fold predictions are given, and the interval over repeat means otherwise. The report names the interval used.
+- These are standard methods. No novelty is claimed for them. Both AUROC intervals resample fixed predictions and ignore retraining, so they are narrower than a label-permutation null that retrains the model. The interval over repeat means reflects split-to-split variation only and narrows as repeats are added without new patients. Neither is a test against chance.
 
 ## 4. Baselines
 
 Three baselines are computed for the unanimous-wrong rate.
 
 - Naive independence: for m options, (1/(m-1))^(k-1), averaged over all-wrong cases. For five models on four-option questions it is 1.23%.
-- Model expectation: closed form. For each all-wrong case, take each model's distribution over its wrong letters, renormalised to that case's distractors, multiply across models, and sum over distractors. The mean over all-wrong cases is the expectation. The chance column in Table I of the ICDM paper was this quantity, although the paper text describes permutations of correctness vectors (CHANGELOG, difference 1).
+- Model expectation: closed form. For each all-wrong case, take each model's distribution over its wrong letters, renormalised to that case's distractors, multiply across models, and sum over distractors. The mean over all-wrong cases is the expectation. The chance values for the two k = 4 rows of Table I in the ICDM paper with distinct frontier models (3.9% and 4.2%) were this quantity, although the paper text describes permutations of correctness vectors. The other rows report naive chance, as the caption states (CHANGELOG, difference 1).
 - Permutation baseline (used for the flag): hold the observed all-wrong set fixed, and permute each model's wrong answers across all-wrong cases that share the same reference letter and option count. 10,000 permutations, seed 42. This differs from permuting correctness vectors, which leaves about 3 all-wrong cases per permutation at k = 5, so its 95th percentile is 0 and any single shared error would fire the flag.
 
 ## 5. Flags
 
-Fixed on 2026-11-12, before the v0.1 reports were generated. The worked examples below were re-analysed the same day, so they are not a prospective test of these rules.
+Fixed on 2026-11-12. The worked examples below were re-analysed the same day, after the permutation baseline had been redesigned (CHANGELOG, difference 2), so these rules are not pre-specified with respect to them. A prospective test needs data that are analysed only after this version is tagged.
 
 - convergent_failure: unanimous-wrong rate above the 95th percentile of the permutation baseline. A flag against naive independence alone is not used, because every ICDM configuration exceeds it.
 - layer_not_above_chance: no solo held-out AUROC interval for the layer lies above 0.5. Wording: "held-out performance does not exceed chance". It is never worded as "below chance".
@@ -67,19 +68,19 @@ ICDM, MedQA, five models (llama3_8b, qwen25_7b, gemma3n_e4b, deepseek_v3, gpt4o)
 | agreed answer error rate | 14 | 395 | 3.5% | 2.1% to 5.9% |
 | agreed-wrong exposure | 14 | 1,271 | 1.1% | 0.7% to 1.8% |
 
-Baselines for the unanimous-wrong rate: naive 1.23%, model expectation 1.4%, permutation mean 3.8%, permutation 95th percentile 7.0%. The observed 24.6% is above 7.0%, so convergent_failure is raised. The ratio to naive is 19.9, to the permutation mean 6.5. Decisions against the limits: unanimous-wrong rate fails (lower bound 15.2% above 10%). Agreed answer error rate is inconclusive (interval 2.1% to 5.9% straddles 5%), and the report states 862 cases with agreed answers would be needed. The MedMCQA four-model configuration (icdm_medmcqa_4models.json) gives 71 of 301 = 23.6% (19.1% to 28.7%) against a permutation 95th percentile of 6.6% and also raises the flag. The Flan-T5 control configuration also raises it (unanimous 25.5% against a permutation mean of 11.6%).
+Baselines for the unanimous-wrong rate: naive 1.23%, model expectation 1.4%, permutation mean 3.8%, permutation 95th percentile 7.0%. The observed 24.6% is above 7.0%, so convergent_failure is raised. The ratio to naive is 19.9, to the permutation mean 6.5. Decisions against the limits: unanimous-wrong rate fails (lower bound 15.2% above 10%). Agreed answer error rate is inconclusive (interval 2.1% to 5.9% straddles 5%), and the report states 862 cases with agreed answers would be needed. The MedMCQA four-model configuration (icdm_medmcqa_4models.json) gives 71 of 301 = 23.6% (19.1% to 28.7%) against a permutation 95th percentile of 6.6% and also raises the flag. The control configuration with Flan-T5, Llama and Qwen (icdm_medqa_flan_control.json) also raises it: 71 of 278 = 25.5% against a permutation 95th percentile of 14.7%. The other two models, Llama and Qwen, converge strongly with each other. The two-model pair of Flan-T5 and GPT-4o (icdm_medqa_flan_gpt4o_pair.json) does not raise it: 40 of 104 = 38.5% against a 95th percentile of 39.4%.
 
 SGOF, genotype layer, report sgof_genotype_layer.json. Inputs: fold_auroc.csv and oof_predictions.csv, 10 repeats by 10 folds, 111 patients.
 
 | quantity | value | interval |
 | --- | --- | --- |
-| genotype alone, GCN, AUROC | 0.355 | 0.322 to 0.383 over repeats, 0.285 to 0.415 over patients |
+| genotype alone, GCN, AUROC | 0.355 | 0.322 to 0.383 over repeats, 0.285 to 0.415 over patients (fixed predictions, not a test against chance) |
 | expression alone, GCN, AUROC | 0.607 | patient interval 0.526 to 0.676 |
 | naive concatenation, loss from adding genotype | 0.343 (0.675 without, 0.331 with) | 0.303 to 0.381 |
 | SGOF, loss from adding genotype | 0.003 (change -0.003) | repeats -0.005 to 0.010, patients -0.013 to 0.011 |
 | validation-weighted ensemble, loss | 0.007 (0.712 without, 0.706 with) | 0.002 to 0.012 |
 
-Genotype is flagged layer_not_above_chance, because its solo intervals lie below 0.5. The interval 0.30 to 0.69 reproduced from the SGOF paper alongside the genotype AUROC is the label-permutation null, not an interval for the AUROC. Expression is not flagged because its patient-level lower bound is 0.526. Under the illustrative 0.02 limit, all eight conventional fusion methods lose AUROC (by 0.032 to 0.343), seven fail and mogcn is inconclusive. SGOF supports reliance, and so does the validation-weighted ensemble. A simpler validation-weighted ensemble was more accurate on this cohort, so stability is not unique to SGOF.
+Genotype is flagged layer_not_above_chance because no solo interval lies above 0.5. Its AUROC of 0.355 lies inside the label-permutation null (0.30 to 0.69, two-sided p = 0.13), so it is not claimed to be worse than chance. The bootstrap intervals in the table resample fixed predictions and ignore retraining. They are about a third of the width of that null and are not a test against chance. Expression is not flagged because its patient-level lower bound is 0.526. Under the illustrative 0.02 limit, all eight conventional fusion methods lose AUROC (by 0.032 to 0.343), seven fail and mogcn is inconclusive. SGOF supports reliance in the main run (patient interval upper bound 0.011), and so does the validation-weighted ensemble (upper bound 0.012, interval over repeat means only, because no out-of-fold predictions ship for it). An earlier SGOF run of the same pipeline (sgof_earlier_run) is inconclusive under the same limit: loss 0.012, interval 0.003 to 0.021. The limit was chosen by the author on the day of the analysis, so these decisions illustrate the rule and are not evidence that SGOF is safe to rely on. A simpler validation-weighted ensemble was more accurate on this cohort, so stability is not unique to SGOF.
 
 ## 8. Limits
 
@@ -88,7 +89,8 @@ Genotype is flagged layer_not_above_chance, because its solo intervals lie below
 - Interval coverage at small counts is limited. The 57-case denominator is an example.
 - The permutation baseline does not flag a shared letter preference: if every model always picks the same wrong letter for a given correct letter, the shared answer is attributed to individual tendencies and is not flagged. The test test_shared_letter_preference_is_not_flagged documents this.
 - The patient-level SGOF interval reproduces as -0.011 to 0.013 against the paper's -0.012 to 0.012, owing to rounding of stored probabilities.
-- Results are evidence for a developer's decision, not a safety certification.
+- Specificity. On synthetic panels with independent errors the convergent_failure flag does not fire (test test_independent_errors_do_not_flag). On MedQA it fires for most panels, including panels that contain the near-random Flan-T5 control, which means some distractors attract even a near-random model. A flag therefore says that models share wrong answers beyond their individual letter habits, not that they share one reasoning failure. Read the margin between the observed rate and the 95th percentile, not only the flag.
+- Results are evidence for a developer's decision, not a safety certification. The decision label "supports reliance" applies only within the scope sentence.
 
 ## 9. Versioning
 

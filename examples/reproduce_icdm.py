@@ -34,7 +34,7 @@ check("MedQA 3 mid tier: unanimous wrong rate (%)", u["estimate"], "41.9", 100)
 check("MedQA 3 mid tier: chance column, naive (%)", b["naive_independence"], "11.1", 100)
 check("MedQA 3 mid tier: ratio to chance", b["ratio_to_naive"], "3.8")
 check("MedQA 3 mid tier: agreed wrong exposure (%)", e["agreed_wrong_exposure"]["estimate"], "9.2", 100)
-check("MedQA 3 mid tier: agreed cases", e["agreed_answer_error_rate"]["denominator"], "520")
+check("MedQA 3 mid tier: agreed cases (not printed in the paper, rerun target)", e["agreed_answer_error_rate"]["denominator"], "520")
 check("MedQA 3 mid tier: error rate among agreed answers (%)", e["agreed_answer_error_rate"]["estimate"], "22.5", 100)
 
 e, b, f = run("medqa", MID + ["deepseek_v3"])

@@ -9,7 +9,7 @@ def check(label, value, printed, scale=1, known_difference=None):
     ok = got == printed or (got == "-0." + "0" * decimals and printed == got[1:])
     status = "PASS" if ok else ("DIFF" if known_difference else "FAIL")
     RESULTS.append((status, label, got, printed, known_difference))
-    print(f"{status}  {label:<66} got {got:>8}  paper {printed:>8}")
+    print(f"{status}  {label:<66} got {got:>8}  target {printed:>8}")
     if known_difference and not ok:
         print(f"      {known_difference}")
 

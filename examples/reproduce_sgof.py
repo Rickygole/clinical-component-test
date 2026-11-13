@@ -36,8 +36,8 @@ s = loss["sgof"]
 check("SGOF: AUROC with genotype", s["auroc_with"], "0.671")
 check("SGOF: AUROC without genotype", s["auroc_without"], "0.674")
 check("SGOF: change from adding genotype", s["auroc_change_with_minus_without"], "-0.003")
-check("SGOF: change, repeat interval lower", -s["upper_95"], "-0.010")
-check("SGOF: change, repeat interval upper", -s["lower_95"], "0.005")
+check("SGOF: change, repeat interval lower", -s["repeat_upper_95"], "-0.010")
+check("SGOF: change, repeat interval upper", -s["repeat_lower_95"], "0.005")
 check("SGOF: change, patient interval lower", -s["patient_upper_95"], "-0.012", known_difference=ROUNDED)
 check("SGOF: change, patient interval upper", -s["patient_lower_95"], "0.012", known_difference=ROUNDED)
 check("SGOF earlier run: change from adding genotype", loss["sgof_earlier_run"]["auroc_change_with_minus_without"], "-0.012")
@@ -45,7 +45,7 @@ v = loss["validation_weighted_ensemble"]
 check("validation weighted ensemble: AUROC with genotype", v["auroc_with"], "0.706")
 check("validation weighted ensemble: AUROC without genotype", v["auroc_without"], "0.712")
 check("validation weighted ensemble: change", v["auroc_change_with_minus_without"], "-0.007")
-check("validation weighted ensemble: interval excludes zero (1 = yes)", float(v["lower_95"] > 0), "1")
+check("validation weighted ensemble: interval excludes zero (1 = yes)", float(v["repeat_lower_95"] > 0), "1")
 
 for fam, m, e, g in (("lr_single_layer", "0.691", "0.650", "0.306"), ("gcn_single_layer", "0.669", "0.607", "0.355")):
     check(f"{fam}: methylation alone", solo[(fam, "methylation")]["estimate"], m)

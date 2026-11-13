@@ -18,12 +18,14 @@
       "count": null,
       "denominator": null,
       "estimate": 0.60719054,
-      "lower_95": 0.5870464897500001,
-      "upper_95": 0.63014291075,
+      "lower_95": 0.525615132416603,
+      "upper_95": 0.6758003246753247,
       "acceptable_limit": null,
       "limit_recorded": null,
       "decision": "no limit recorded",
-      "interval": "bootstrap over repeat means",
+      "interval": "bootstrap over patients",
+      "repeat_lower_95": 0.5870464897500001,
+      "repeat_upper_95": 0.63014291075,
       "patient_lower_95": 0.525615132416603,
       "patient_upper_95": 0.6758003246753247
     },
@@ -37,12 +39,14 @@
       "count": null,
       "denominator": null,
       "estimate": 0.35452385,
-      "lower_95": 0.32206970475,
-      "upper_95": 0.38335712075,
+      "lower_95": 0.28460531540029493,
+      "upper_95": 0.41457494590043276,
       "acceptable_limit": null,
       "limit_recorded": null,
       "decision": "no limit recorded",
-      "interval": "bootstrap over repeat means",
+      "interval": "bootstrap over patients",
+      "repeat_lower_95": 0.32206970475,
+      "repeat_upper_95": 0.38335712075,
       "patient_lower_95": 0.28460531540029493,
       "patient_upper_95": 0.41457494590043276
     },
@@ -56,12 +60,14 @@
       "count": null,
       "denominator": null,
       "estimate": 0.66923811,
-      "lower_95": 0.644118475,
-      "upper_95": 0.6941197144999999,
+      "lower_95": 0.5753645833333332,
+      "upper_95": 0.7440910953800298,
       "acceptable_limit": null,
       "limit_recorded": null,
       "decision": "no limit recorded",
-      "interval": "bootstrap over repeat means",
+      "interval": "bootstrap over patients",
+      "repeat_lower_95": 0.644118475,
+      "repeat_upper_95": 0.6941197144999999,
       "patient_lower_95": 0.5753645833333332,
       "patient_upper_95": 0.7440910953800298
     },
@@ -75,12 +81,14 @@
       "count": null,
       "denominator": null,
       "estimate": 0.65033335,
-      "lower_95": 0.6357607105,
-      "upper_95": 0.6633345792500002,
+      "lower_95": 0.5487880170959838,
+      "upper_95": 0.7393160518444667,
       "acceptable_limit": null,
       "limit_recorded": null,
       "decision": "no limit recorded",
-      "interval": "bootstrap over repeat means",
+      "interval": "bootstrap over patients",
+      "repeat_lower_95": 0.6357607105,
+      "repeat_upper_95": 0.6633345792500002,
       "patient_lower_95": 0.5487880170959838,
       "patient_upper_95": 0.7393160518444667
     },
@@ -94,12 +102,14 @@
       "count": null,
       "denominator": null,
       "estimate": 0.30619049,
-      "lower_95": 0.28095239000000005,
-      "upper_95": 0.3288571309999999,
+      "lower_95": 0.24046549255134972,
+      "upper_95": 0.3762973781476109,
       "acceptable_limit": null,
       "limit_recorded": null,
       "decision": "no limit recorded",
-      "interval": "bootstrap over repeat means",
+      "interval": "bootstrap over patients",
+      "repeat_lower_95": 0.28095239000000005,
+      "repeat_upper_95": 0.3288571309999999,
       "patient_lower_95": 0.24046549255134972,
       "patient_upper_95": 0.3762973781476109
     },
@@ -113,12 +123,14 @@
       "count": null,
       "denominator": null,
       "estimate": 0.69061905,
-      "lower_95": 0.67628565975,
-      "upper_95": 0.70409529025,
+      "lower_95": 0.594458930899609,
+      "upper_95": 0.778533271309587,
       "acceptable_limit": null,
       "limit_recorded": null,
       "decision": "no limit recorded",
-      "interval": "bootstrap over repeat means",
+      "interval": "bootstrap over patients",
+      "repeat_lower_95": 0.67628565975,
+      "repeat_upper_95": 0.70409529025,
       "patient_lower_95": 0.594458930899609,
       "patient_upper_95": 0.778533271309587
     },
@@ -140,7 +152,9 @@
       "auroc_with": 0.35600003,
       "auroc_without": 0.66011905,
       "auroc_change_with_minus_without": -0.30411902,
-      "interval": "paired bootstrap over repeat means"
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.26859458699999994,
+      "repeat_upper_95": 0.34116720475
     },
     {
       "test": "auroc_loss_from_adding_layer",
@@ -160,7 +174,9 @@
       "auroc_with": 0.3732381,
       "auroc_without": 0.6578809399999999,
       "auroc_change_with_minus_without": -0.28464284,
-      "interval": "paired bootstrap over repeat means"
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.25147553549999996,
+      "repeat_upper_95": 0.32366834799999994
     },
     {
       "test": "auroc_loss_from_adding_layer",
@@ -180,7 +196,9 @@
       "auroc_with": 0.5909523999999999,
       "auroc_without": 0.6474761900000001,
       "auroc_change_with_minus_without": -0.05652379,
-      "interval": "paired bootstrap over repeat means"
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.022951190250000003,
+      "repeat_upper_95": 0.09047609125
     },
     {
       "test": "auroc_loss_from_adding_layer",
@@ -200,7 +218,9 @@
       "auroc_with": 0.61904762,
       "auroc_without": 0.7016667000000001,
       "auroc_change_with_minus_without": -0.08261908,
-      "interval": "paired bootstrap over repeat means"
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.06957151975,
+      "repeat_upper_95": 0.09500120874999998
     },
     {
       "test": "auroc_loss_from_adding_layer",
@@ -220,7 +240,9 @@
       "auroc_with": 0.5555952300000001,
       "auroc_without": 0.58804763,
       "auroc_change_with_minus_without": -0.03245239999999999,
-      "interval": "paired bootstrap over repeat means"
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.009832765000000004,
+      "repeat_upper_95": 0.052809499999999995
     },
     {
       "test": "auroc_loss_from_adding_layer",
@@ -240,7 +262,9 @@
       "auroc_with": 0.50243505,
       "auroc_without": 0.6760670900000001,
       "auroc_change_with_minus_without": -0.17363204,
-      "interval": "paired bootstrap over repeat means"
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.13024866849999997,
+      "repeat_upper_95": 0.22039546724999987
     },
     {
       "test": "auroc_loss_from_adding_layer",
@@ -260,7 +284,9 @@
       "auroc_with": 0.3313333200000001,
       "auroc_without": 0.67466669,
       "auroc_change_with_minus_without": -0.34333337,
-      "interval": "paired bootstrap over repeat means"
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.302617849,
+      "repeat_upper_95": 0.38109646049999996
     },
     {
       "test": "auroc_loss_from_adding_layer",
@@ -272,15 +298,17 @@
       "count": null,
       "denominator": null,
       "estimate": 0.003166720000000004,
-      "lower_95": -0.00471423024999999,
-      "upper_95": 0.009809600249999998,
+      "lower_95": -0.013106927114280163,
+      "upper_95": 0.011344936674159693,
       "acceptable_limit": 0.02,
       "limit_recorded": "2026-11-12",
       "decision": "supports reliance",
       "auroc_with": 0.6707381000000001,
       "auroc_without": 0.6739048200000001,
       "auroc_change_with_minus_without": -0.003166720000000004,
-      "interval": "paired bootstrap over repeat means",
+      "interval": "paired bootstrap over patients",
+      "repeat_lower_95": -0.00471423024999999,
+      "repeat_upper_95": 0.009809600249999998,
       "patient_loss_mean": -0.0010327504930557807,
       "patient_lower_95": -0.013106927114280163,
       "patient_upper_95": 0.011344936674159693
@@ -303,7 +331,9 @@
       "auroc_with": 0.6669761900000001,
       "auroc_without": 0.67909522,
       "auroc_change_with_minus_without": -0.012119030000000006,
-      "interval": "paired bootstrap over repeat means"
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.002857129750000009,
+      "repeat_upper_95": 0.020999920499999998
     },
     {
       "test": "auroc_loss_from_adding_layer",
@@ -323,7 +353,9 @@
       "auroc_with": 0.5319047299999999,
       "auroc_without": 0.6442857399999999,
       "auroc_change_with_minus_without": -0.11238100999999999,
-      "interval": "paired bootstrap over repeat means"
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.0916179405,
+      "repeat_upper_95": 0.1315238305
     },
     {
       "test": "auroc_loss_from_adding_layer",
@@ -343,7 +375,9 @@
       "auroc_with": 0.7057143100000001,
       "auroc_without": 0.7124286200000001,
       "auroc_change_with_minus_without": -0.006714310000000001,
-      "interval": "paired bootstrap over repeat means"
+      "interval": "paired bootstrap over repeat means",
+      "repeat_lower_95": 0.002285739750000003,
+      "repeat_upper_95": 0.011952400000000002
     }
   ],
   "flags": [
@@ -359,7 +393,8 @@
   "notes": [
     "bootstrap seed 2026, 10000 repeat resamples, 2000 patient resamples",
     "folds within a repeat share training patients, so intervals are optimistic about new patients",
-    "decisions use the interval over repeat means; flags use the patient interval when out-of-fold predictions are given"
+    "decisions and flags use the patient interval when out-of-fold predictions are given, otherwise the interval over repeat means",
+    "both intervals resample fixed predictions and ignore retraining; the interval over repeat means narrows as repeats are added without new patients"
   ],
   "scope": "Results hold only for cases drawn like the labeled set used here. They are evidence for a developer's decision, not a clinical safety finding."
 }
