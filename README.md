@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24183594.svg)](https://doi.org/10.5281/zenodo.24183594)
 
-Every version is archived on Zenodo. The concept DOI 10.5281/zenodo.24183594 resolves to the latest version. Version 0.1.0: https://doi.org/10.5281/zenodo.24183595.
+Every version is archived on Zenodo. The concept DOI 10.5281/zenodo.24183594 resolves to the latest version. Version 0.1.0: https://doi.org/10.5281/zenodo.24183595. Version 0.1.1: https://doi.org/10.5281/zenodo.24183862.
 
 cctest: pre-release checks for clinical AI systems that combine components. This is v0.1.1: the code of the first public version (v0.1.0) plus an outside-data run. It packages two checks and reproduces the published analyses they come from. It is designed to let teams check, before deployment, two things about a system built from several parts.
 
