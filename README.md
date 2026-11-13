@@ -4,7 +4,7 @@
 
 Every version is archived on Zenodo. The concept DOI 10.5281/zenodo.24183594 resolves to the latest version. Version 0.1.0: https://doi.org/10.5281/zenodo.24183595.
 
-cctest: pre-release checks for clinical AI systems that combine components. This is the first public version (v0.1.0). It packages two checks and reproduces the published analyses they come from. It is designed to let teams check, before deployment, two things about a system built from several parts.
+cctest: pre-release checks for clinical AI systems that combine components. This is v0.1.1: the code of the first public version (v0.1.0) plus an outside-data run. It packages two checks and reproduces the published analyses they come from. It is designed to let teams check, before deployment, two things about a system built from several parts.
 
 1. Agreement test for combined language models. When several models answer the same multiple-choice question and all agree, how often is the shared answer wrong, and do the models share wrong answers more often than a permutation baseline predicts?
 2. Data-layer test for multi-input fusion models. What does adding each data layer do to held-out AUROC, and does any layer fail to exceed chance on its own?
@@ -97,13 +97,13 @@ Source papers, checked against their camera-ready versions:
 
 ## License
 
-Code: MIT, see [LICENSE](LICENSE). Shipped data files under `data/` are CC BY 4.0 for the author's contributions, with the carve-outs listed in NOTICE. Underlying dataset and model terms are in NOTICE.
+Code: MIT, see [LICENSE](LICENSE). Shipped data files under `data/` are CC BY 4.0 for the author's contributions, with the carve-outs listed in NOTICE. The HELM-derived file under `outside/data/` is not relicensed (see NOTICE). Underlying dataset and model terms are in NOTICE.
 
 ## Limits
 
 - Exam questions are not patients. Nothing here has been validated on patient data.
 - One multi-omic cohort of 111 patients, and two exam datasets. Results from them do not carry to other settings.
-- Model outputs were collected in April to May 2026. Hosted models change over time.
+- The ICDM model outputs were collected in April to May 2026, and the HELM Lite outputs at the dates of their HELM releases. Hosted models change over time.
 - The permutation baseline does not flag a shared letter preference: if every model always picks the same wrong letter for a given correct letter, the test attributes it to individual tendencies. A test documents this.
 - Folds within a repeat share training patients, so layer intervals are optimistic about new patients. Both AUROC intervals resample fixed predictions and ignore retraining. The interval over repeat means reflects split-to-split variation only and narrows as repeats are added without new patients, so it is not a sampling interval. Decisions use the patient interval whenever out-of-fold predictions are supplied. Without them, a layer decision of "supports reliance" rests on the interval over repeat means and is provisional.
 - The flag rule was fixed on 2026-11-12, the same day the worked examples were re-analysed. The examples are not a prospective test of the rule.

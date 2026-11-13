@@ -20,7 +20,7 @@ def extract(model_dir):
     instances = json.loads((model_dir / "instances.json").read_text())
     preds = {p["instance_id"]: p for p in json.loads((model_dir / "display_predictions.json").read_text())}
     stats = {s["instance_id"]: s["stats"] for s in json.loads((model_dir / "per_instance_stats.json").read_text())}
-    rows, disagree, used = [], 0, set()
+    rows, disagree, missing, used = [], 0, 0, set()
     for inst in instances:
         refs = inst["references"]
         gold = [LETTERS[i] for i, r in enumerate(refs) if "correct" in r["tags"]]
@@ -29,23 +29,24 @@ def extract(model_dir):
         p = preds[inst["id"]]
         text = p["predicted_text"].strip()
         answer = text[0] if text and text[0] in LETTERS[:len(refs)] else ""
-        helm, name = stat_value(stats.get(inst["id"], []), ("exact_match", "quasi_exact_match"))
+        helm, name = stat_value(stats.get(inst["id"], []), ("exact_match",))
         if helm is None:
-            helm, name = p.get("stats", {}).get("quasi_exact_match"), "quasi_exact_match (display)"
-        used.add(name)
-        if helm is not None and int(round(helm)) != int(answer == gold[0]):
-            disagree += 1
+            missing += 1
+        else:
+            used.add(name)
+            if int(round(helm)) != int(answer == gold[0]):
+                disagree += 1
         rows.append([inst["id"], model, DEVELOPER[model.split("_")[0]], answer, gold[0], len(refs)])
-    return rows, disagree, used
+    return rows, disagree, missing, used
 
 
 def main(raw, out):
     all_rows = []
     for d in sorted(p for p in Path(raw).iterdir() if p.is_dir()):
-        rows, disagree, used = extract(d)
+        rows, disagree, missing, used = extract(d)
         acc = sum(r[3] == r[4] for r in rows) / len(rows)
         print(f"{d.name}: {len(rows)} instances, accuracy {acc:.3f}, unscored {sum(r[3] == '' for r in rows)}, "
-              f"disagreements with HELM {disagree} ({', '.join(sorted(used))})")
+              f"disagreements with HELM {disagree}, missing HELM statistic {missing} ({', '.join(sorted(used))})")
         all_rows += rows
     with open(out, "w", newline="") as f:
         w = csv.writer(f)

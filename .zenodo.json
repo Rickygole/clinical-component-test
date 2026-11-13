@@ -1,7 +1,7 @@
 {
   "title": "cctest: pre-release checks for clinical AI systems that combine components",
   "upload_type": "software",
-  "description": "First public version of a pre-release test with two modules: an agreement test for combined language models (error rate among agreed answers, unanimous-wrong rate against naive, closed-form and permutation baselines, Wilson 95% intervals) and a data-layer test for multi-input fusion models (AUROC change from each added layer with paired bootstrap intervals, and a flag for layers whose held-out performance does not exceed chance). Reproduces the published analyses of two 2026 papers. Code is MIT licensed. Data files are CC BY 4.0 for the author's contributions, with third-party carve-outs listed in NOTICE.",
+  "description": "Version 0.1.1 (the v0.1.0 code plus a pre-specified outside-data run on Stanford HELM Lite MedQA outputs for ten models) of a pre-release test with two modules: an agreement test for combined language models (error rate among agreed answers, unanimous-wrong rate against naive, closed-form and permutation baselines, Wilson 95% intervals) and a data-layer test for multi-input fusion models (AUROC change from each added layer with paired bootstrap intervals, and a flag for layers whose held-out performance does not exceed chance). Reproduces the published analyses of two 2026 papers. Code is MIT licensed. Data files are CC BY 4.0 for the author's contributions, with third-party carve-outs listed in NOTICE.",
   "creators": [{"name": "Gole, Ricky", "affiliation": "Morgan State University"}],
   "license": "MIT",
   "keywords": ["clinical AI", "evaluation", "language model ensembles", "multi-omic fusion", "pre-release testing"],
